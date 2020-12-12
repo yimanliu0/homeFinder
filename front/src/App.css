@@ -1,0 +1,10 @@
+body {
+  background: url('https://raw.githubusercontent.com/yimanliu0/yimanliu0.github.io/master/images/background.JPG');
+  background-size: 1920px 1000px;
+}
+.App h1 {
+  color: white;
+  position: relative;
+  right: 300px;
+  top: 20px;
+}

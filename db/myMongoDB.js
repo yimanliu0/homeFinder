@@ -1,9 +1,8 @@
-const dotenv = require('dotenv').config();
-const { MongoClient } = require('mongodb');
+const { MongoClient } = require("mongodb");
 function MyDB() {
   const myDB = {};
 
-  const uri = process.env.MONGO_URL || 'mongodb://localhost:27017';
+  const uri = process.env.MONGO_URL || "mongodb://localhost:27017";
 
   // Load apt normal order no sort
   myDB.getApt = async () => {
@@ -11,8 +10,8 @@ function MyDB() {
     try {
       await client.connect();
 
-      const db = client.db('apartments');
-      const collection = db.collection('apartments');
+      const db = client.db("apartments");
+      const collection = db.collection("apartments");
 
       const query = {};
 
@@ -21,7 +20,7 @@ function MyDB() {
         .toArray()
         .finally(() => client.close());
     } catch (err) {
-      console.log('Error connecting to database', err);
+      console.log("Error connecting to database", err);
     }
   };
   // Load apt normal order sort 1
@@ -30,8 +29,8 @@ function MyDB() {
     try {
       await client.connect();
 
-      const db = client.db('apartments');
-      const collection = db.collection('apartments');
+      const db = client.db("apartments");
+      const collection = db.collection("apartments");
 
       const query = {};
 
@@ -41,7 +40,7 @@ function MyDB() {
         .toArray()
         .finally(() => client.close());
     } catch (err) {
-      console.log('Error connecting to database', err);
+      console.log("Error connecting to database", err);
     }
   };
 
@@ -51,8 +50,8 @@ function MyDB() {
     try {
       await client.connect();
 
-      const db = client.db('apartments');
-      const collection = db.collection('apartments');
+      const db = client.db("apartments");
+      const collection = db.collection("apartments");
 
       const query = {};
 
@@ -62,7 +61,7 @@ function MyDB() {
         .toArray()
         .finally(() => client.close());
     } catch (err) {
-      console.log('Error connecting to database', err);
+      console.log("Error connecting to database", err);
     }
   };
 
@@ -72,8 +71,8 @@ function MyDB() {
     try {
       await client.connect();
 
-      const db = client.db('apartments');
-      const collection = db.collection('apartments');
+      const db = client.db("apartments");
+      const collection = db.collection("apartments");
 
       const query = {};
 
@@ -83,7 +82,7 @@ function MyDB() {
         .toArray()
         .finally(() => client.close());
     } catch (err) {
-      console.log('Error connecting to database', err);
+      console.log("Error connecting to database", err);
     }
   };
 
@@ -93,8 +92,8 @@ function MyDB() {
     try {
       await client.connect();
 
-      const db = client.db('apartments');
-      const collection = db.collection('apartments');
+      const db = client.db("apartments");
+      const collection = db.collection("apartments");
 
       const query = {};
 
@@ -104,7 +103,7 @@ function MyDB() {
         .toArray()
         .finally(() => client.close());
     } catch (err) {
-      console.log('Error connecting to database', err);
+      console.log("Error connecting to database", err);
     }
   };
 
@@ -114,17 +113,17 @@ function MyDB() {
     try {
       await client.connect();
 
-      const db = client.db('apartments');
-      const collection = db.collection('apartments');
+      const db = client.db("apartments");
+      const collection = db.collection("apartments");
 
-      const query = { price: { $lt: '$1999' } };
+      const query = { price: { $lt: "$1999" } };
 
       return collection
         .find(query)
         .toArray()
         .finally(() => client.close());
     } catch (err) {
-      console.log('Error connecting to database', err);
+      console.log("Error connecting to database", err);
     }
   };
 
@@ -134,10 +133,10 @@ function MyDB() {
     try {
       await client.connect();
 
-      const db = client.db('apartments');
-      const collection = db.collection('apartments');
+      const db = client.db("apartments");
+      const collection = db.collection("apartments");
 
-      const query = { price: { $lt: '$1999' } };
+      const query = { price: { $lt: "$1999" } };
 
       return collection
         .find(query)
@@ -145,7 +144,7 @@ function MyDB() {
         .toArray()
         .finally(() => client.close());
     } catch (err) {
-      console.log('Error connecting to database', err);
+      console.log("Error connecting to database", err);
     }
   };
 
@@ -155,10 +154,10 @@ function MyDB() {
     try {
       await client.connect();
 
-      const db = client.db('apartments');
-      const collection = db.collection('apartments');
+      const db = client.db("apartments");
+      const collection = db.collection("apartments");
 
-      const query = { price: { $lt: '$1999' } };
+      const query = { price: { $lt: "$1999" } };
 
       return collection
         .find(query)
@@ -166,7 +165,7 @@ function MyDB() {
         .toArray()
         .finally(() => client.close());
     } catch (err) {
-      console.log('Error connecting to database', err);
+      console.log("Error connecting to database", err);
     }
   };
 
@@ -176,10 +175,10 @@ function MyDB() {
     try {
       await client.connect();
 
-      const db = client.db('apartments');
-      const collection = db.collection('apartments');
+      const db = client.db("apartments");
+      const collection = db.collection("apartments");
 
-      const query = { price: { $lt: '$1999' } };
+      const query = { price: { $lt: "$1999" } };
 
       return collection
         .find(query)
@@ -187,7 +186,7 @@ function MyDB() {
         .toArray()
         .finally(() => client.close());
     } catch (err) {
-      console.log('Error connecting to database', err);
+      console.log("Error connecting to database", err);
     }
   };
 
@@ -197,10 +196,10 @@ function MyDB() {
     try {
       await client.connect();
 
-      const db = client.db('apartments');
-      const collection = db.collection('apartments');
+      const db = client.db("apartments");
+      const collection = db.collection("apartments");
 
-      const query = { price: { $lt: '$1999' } };
+      const query = { price: { $lt: "$1999" } };
 
       return collection
         .find(query)
@@ -208,7 +207,7 @@ function MyDB() {
         .toArray()
         .finally(() => client.close());
     } catch (err) {
-      console.log('Error connecting to database', err);
+      console.log("Error connecting to database", err);
     }
   };
 
@@ -218,11 +217,11 @@ function MyDB() {
     try {
       await client.connect();
 
-      const db = client.db('apartments');
-      const collection = db.collection('apartments');
+      const db = client.db("apartments");
+      const collection = db.collection("apartments");
 
       const query = {
-        $and: [{ price: { $gt: '$2600' } }, { price: { $lt: '$3999' } }],
+        $and: [{ price: { $gt: "$2600" } }, { price: { $lt: "$3999" } }],
       };
 
       return collection
@@ -230,7 +229,7 @@ function MyDB() {
         .toArray()
         .finally(() => client.close());
     } catch (err) {
-      console.log('Error connecting to database', err);
+      console.log("Error connecting to database", err);
     }
   };
 
@@ -240,11 +239,11 @@ function MyDB() {
     try {
       await client.connect();
 
-      const db = client.db('apartments');
-      const collection = db.collection('apartments');
+      const db = client.db("apartments");
+      const collection = db.collection("apartments");
 
       const query = {
-        $and: [{ price: { $gt: '$2600' } }, { price: { $lt: '$3999' } }],
+        $and: [{ price: { $gt: "$2600" } }, { price: { $lt: "$3999" } }],
       };
 
       return collection
@@ -253,7 +252,7 @@ function MyDB() {
         .toArray()
         .finally(() => client.close());
     } catch (err) {
-      console.log('Error connecting to database', err);
+      console.log("Error connecting to database", err);
     }
   };
 
@@ -263,11 +262,11 @@ function MyDB() {
     try {
       await client.connect();
 
-      const db = client.db('apartments');
-      const collection = db.collection('apartments');
+      const db = client.db("apartments");
+      const collection = db.collection("apartments");
 
       const query = {
-        $and: [{ price: { $gt: '$2600' } }, { price: { $lt: '$3999' } }],
+        $and: [{ price: { $gt: "$2600" } }, { price: { $lt: "$3999" } }],
       };
 
       return collection
@@ -276,7 +275,7 @@ function MyDB() {
         .toArray()
         .finally(() => client.close());
     } catch (err) {
-      console.log('Error connecting to database', err);
+      console.log("Error connecting to database", err);
     }
   };
 
@@ -286,11 +285,11 @@ function MyDB() {
     try {
       await client.connect();
 
-      const db = client.db('apartments');
-      const collection = db.collection('apartments');
+      const db = client.db("apartments");
+      const collection = db.collection("apartments");
 
       const query = {
-        $and: [{ price: { $gt: '$2600' } }, { price: { $lt: '$3999' } }],
+        $and: [{ price: { $gt: "$2600" } }, { price: { $lt: "$3999" } }],
       };
 
       return collection
@@ -299,7 +298,7 @@ function MyDB() {
         .toArray()
         .finally(() => client.close());
     } catch (err) {
-      console.log('Error connecting to database', err);
+      console.log("Error connecting to database", err);
     }
   };
 
@@ -309,11 +308,11 @@ function MyDB() {
     try {
       await client.connect();
 
-      const db = client.db('apartments');
-      const collection = db.collection('apartments');
+      const db = client.db("apartments");
+      const collection = db.collection("apartments");
 
       const query = {
-        $and: [{ price: { $gt: '$2600' } }, { price: { $lt: '$3999' } }],
+        $and: [{ price: { $gt: "$2600" } }, { price: { $lt: "$3999" } }],
       };
 
       return collection
@@ -322,7 +321,7 @@ function MyDB() {
         .toArray()
         .finally(() => client.close());
     } catch (err) {
-      console.log('Error connecting to database', err);
+      console.log("Error connecting to database", err);
     }
   };
 
@@ -332,11 +331,11 @@ function MyDB() {
     try {
       await client.connect();
 
-      const db = client.db('apartments');
-      const collection = db.collection('apartments');
+      const db = client.db("apartments");
+      const collection = db.collection("apartments");
 
       const query = {
-        $and: [{ price: { $gt: '$4000' } }, { price: { $lt: '$5999' } }],
+        $and: [{ price: { $gt: "$4000" } }, { price: { $lt: "$5999" } }],
       };
 
       return collection
@@ -344,7 +343,7 @@ function MyDB() {
         .toArray()
         .finally(() => client.close());
     } catch (err) {
-      console.log('Error connecting to database', err);
+      console.log("Error connecting to database", err);
     }
   };
 
@@ -354,11 +353,11 @@ function MyDB() {
     try {
       await client.connect();
 
-      const db = client.db('apartments');
-      const collection = db.collection('apartments');
+      const db = client.db("apartments");
+      const collection = db.collection("apartments");
 
       const query = {
-        $and: [{ price: { $gt: '$4000' } }, { price: { $lt: '$5999' } }],
+        $and: [{ price: { $gt: "$4000" } }, { price: { $lt: "$5999" } }],
       };
 
       return collection
@@ -367,7 +366,7 @@ function MyDB() {
         .toArray()
         .finally(() => client.close());
     } catch (err) {
-      console.log('Error connecting to database', err);
+      console.log("Error connecting to database", err);
     }
   };
 
@@ -377,11 +376,11 @@ function MyDB() {
     try {
       await client.connect();
 
-      const db = client.db('apartments');
-      const collection = db.collection('apartments');
+      const db = client.db("apartments");
+      const collection = db.collection("apartments");
 
       const query = {
-        $and: [{ price: { $gt: '$4000' } }, { price: { $lt: '$5999' } }],
+        $and: [{ price: { $gt: "$4000" } }, { price: { $lt: "$5999" } }],
       };
 
       return collection
@@ -390,7 +389,7 @@ function MyDB() {
         .toArray()
         .finally(() => client.close());
     } catch (err) {
-      console.log('Error connecting to database', err);
+      console.log("Error connecting to database", err);
     }
   };
 
@@ -400,11 +399,11 @@ function MyDB() {
     try {
       await client.connect();
 
-      const db = client.db('apartments');
-      const collection = db.collection('apartments');
+      const db = client.db("apartments");
+      const collection = db.collection("apartments");
 
       const query = {
-        $and: [{ price: { $gt: '$4000' } }, { price: { $lt: '$5999' } }],
+        $and: [{ price: { $gt: "$4000" } }, { price: { $lt: "$5999" } }],
       };
 
       return collection
@@ -413,7 +412,7 @@ function MyDB() {
         .toArray()
         .finally(() => client.close());
     } catch (err) {
-      console.log('Error connecting to database', err);
+      console.log("Error connecting to database", err);
     }
   };
 
@@ -423,11 +422,11 @@ function MyDB() {
     try {
       await client.connect();
 
-      const db = client.db('apartments');
-      const collection = db.collection('apartments');
+      const db = client.db("apartments");
+      const collection = db.collection("apartments");
 
       const query = {
-        $and: [{ price: { $gt: '$4000' } }, { price: { $lt: '$5999' } }],
+        $and: [{ price: { $gt: "$4000" } }, { price: { $lt: "$5999" } }],
       };
 
       return collection
@@ -436,7 +435,7 @@ function MyDB() {
         .toArray()
         .finally(() => client.close());
     } catch (err) {
-      console.log('Error connecting to database', err);
+      console.log("Error connecting to database", err);
     }
   };
 
@@ -446,17 +445,17 @@ function MyDB() {
     try {
       await client.connect();
 
-      const db = client.db('apartments');
-      const collection = db.collection('apartments');
+      const db = client.db("apartments");
+      const collection = db.collection("apartments");
 
-      const query = { price: { $gt: '$6000' } };
+      const query = { price: { $gt: "$6000" } };
 
       return collection
         .find(query)
         .toArray()
         .finally(() => client.close());
     } catch (err) {
-      console.log('Error connecting to database', err);
+      console.log("Error connecting to database", err);
     }
   };
 
@@ -466,10 +465,10 @@ function MyDB() {
     try {
       await client.connect();
 
-      const db = client.db('apartments');
-      const collection = db.collection('apartments');
+      const db = client.db("apartments");
+      const collection = db.collection("apartments");
 
-      const query = { price: { $gt: '$6000' } };
+      const query = { price: { $gt: "$6000" } };
 
       return collection
         .find(query)
@@ -477,7 +476,7 @@ function MyDB() {
         .toArray()
         .finally(() => client.close());
     } catch (err) {
-      console.log('Error connecting to database', err);
+      console.log("Error connecting to database", err);
     }
   };
 
@@ -487,10 +486,10 @@ function MyDB() {
     try {
       await client.connect();
 
-      const db = client.db('apartments');
-      const collection = db.collection('apartments');
+      const db = client.db("apartments");
+      const collection = db.collection("apartments");
 
-      const query = { price: { $gt: '$6000' } };
+      const query = { price: { $gt: "$6000" } };
 
       return collection
         .find(query)
@@ -498,7 +497,7 @@ function MyDB() {
         .toArray()
         .finally(() => client.close());
     } catch (err) {
-      console.log('Error connecting to database', err);
+      console.log("Error connecting to database", err);
     }
   };
 
@@ -508,10 +507,10 @@ function MyDB() {
     try {
       await client.connect();
 
-      const db = client.db('apartments');
-      const collection = db.collection('apartments');
+      const db = client.db("apartments");
+      const collection = db.collection("apartments");
 
-      const query = { price: { $gt: '$6000' } };
+      const query = { price: { $gt: "$6000" } };
 
       return collection
         .find(query)
@@ -519,7 +518,7 @@ function MyDB() {
         .toArray()
         .finally(() => client.close());
     } catch (err) {
-      console.log('Error connecting to database', err);
+      console.log("Error connecting to database", err);
     }
   };
 
@@ -529,10 +528,10 @@ function MyDB() {
     try {
       await client.connect();
 
-      const db = client.db('apartments');
-      const collection = db.collection('apartments');
+      const db = client.db("apartments");
+      const collection = db.collection("apartments");
 
-      const query = { price: { $gt: '$6000' } };
+      const query = { price: { $gt: "$6000" } };
 
       return collection
         .find(query)
@@ -540,7 +539,7 @@ function MyDB() {
         .toArray()
         .finally(() => client.close());
     } catch (err) {
-      console.log('Error connecting to database', err);
+      console.log("Error connecting to database", err);
     }
   };
 
@@ -550,8 +549,8 @@ function MyDB() {
     try {
       await client.connect();
 
-      const db = client.db('apartments');
-      const collection = db.collection('apartments');
+      const db = client.db("apartments");
+      const collection = db.collection("apartments");
 
       const query = { titletextonly: { $regex: `.*${keyword}*` } };
 
@@ -560,7 +559,7 @@ function MyDB() {
         .toArray()
         .finally(() => client.close());
     } catch (err) {
-      console.log('Error connecting to database', err);
+      console.log("Error connecting to database", err);
     }
   };
 
@@ -570,12 +569,12 @@ function MyDB() {
     try {
       await client.connect();
 
-      const db = client.db('apartments');
-      const collection = db.collection('apartments');
+      const db = client.db("apartments");
+      const collection = db.collection("apartments");
 
       return collection;
     } catch (err) {
-      console.log('Error connecting to database', err);
+      console.log("Error connecting to database", err);
     }
   };
 
@@ -585,12 +584,12 @@ function MyDB() {
     try {
       await client.connect();
 
-      const db = client.db('apartments');
-      const collection = db.collection('users');
+      const db = client.db("apartments");
+      const collection = db.collection("users");
 
       return collection;
     } catch (err) {
-      console.log('Error connecting to database', err);
+      console.log("Error connecting to database", err);
     }
   };
 

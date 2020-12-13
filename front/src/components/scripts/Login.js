@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import '../styles/Login.css';
+import React, { useState } from "react";
+import axios from "axios";
+import "../styles/Login.css";
 
 function Login(props) {
-  const [loginError, setLoginError] = useState('');
+  const [loginError, setLoginError] = useState("");
 
-  const page = '#';
+  const page = "#";
 
   const handleLoginClick = (e) => {
     e.preventDefault();
-    const url = '/signin';
+    const url = "/signin";
     const body = {
-      username: document.getElementById('username').value,
-      password: document.getElementById('password').value,
+      username: document.getElementById("username").value,
+      password: document.getElementById("password").value,
     };
     axios
       .post(url, body)
@@ -22,11 +22,11 @@ function Login(props) {
         props.setUser(res.data);
       })
       .catch((error) => {
-        console.log('there is error');
+        console.log("there is error");
         if (error.response.data) {
           setLoginError(error.response.data);
         } else {
-          const msg = 'Unexpected Exception occurs';
+          const msg = "Unexpected Exception occurs";
           console.log(msg);
           setLoginError(msg);
         }
@@ -41,7 +41,8 @@ function Login(props) {
           name="username"
           type="text"
           aria-label="Username"
-          placeholder={'Username'}
+          autoComplete="on"
+          placeholder={"Username"}
         />
         <br />
         <br />
@@ -51,10 +52,11 @@ function Login(props) {
           name="password"
           type="password"
           aria-label="Password"
-          placeholder={'Password'}
+          autoComplete="on"
+          placeholder={"Password"}
         />
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <div className={'button-placeholder'}>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <div className={"button-placeholder"}>
             <button
               className="btn btn-primary"
               onClick={handleLoginClick}
@@ -66,7 +68,7 @@ function Login(props) {
         </div>
         <div className="mt-4">
           <div className="d-flex justify-content-center links">
-            Don't have an account?{' '}
+            Don't have an account?{" "}
             <a
               href={page}
               className="ml-2"

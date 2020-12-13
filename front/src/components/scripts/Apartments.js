@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import Pagination from 'react-bootstrap/Pagination';
-import DropdownButton from 'react-bootstrap/DropdownButton';
-import Dropdown from 'react-bootstrap/Dropdown';
-import Collapse from 'react-bootstrap/Collapse';
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-import '../styles/Apartments.css';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import Pagination from "react-bootstrap/Pagination";
+import DropdownButton from "react-bootstrap/DropdownButton";
+import Dropdown from "react-bootstrap/Dropdown";
+import Collapse from "react-bootstrap/Collapse";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
+import "../styles/Apartments.css";
 
 function Apartments({ user }) {
   const [page, setPage] = useState(1);
@@ -19,66 +19,66 @@ function Apartments({ user }) {
 
   const initialize = async () => {
     try {
-      const url = './apartments/0/0';
-      console.log('pass filter ' + filter);
-      console.log('pass sort ' + sort);
+      const url = "./apartments/0/0";
+      console.log("pass filter " + filter);
+      console.log("pass sort " + sort);
       const apt = await fetch(url).then((res) => res.json());
-      console.log('load apartment success');
+      console.log("load apartment success");
       setApartments(apt);
     } catch (err) {
-      console.log('error here');
+      console.log("error here");
     }
   };
 
   // Load apartments (re-render to get the updated apt info)
   const getApt = async () => {
     try {
-      const url = './apartments/' + sort + '/' + filter;
-      console.log('pass filter ' + filter);
-      console.log('pass sort ' + sort);
+      const url = "./apartments/" + sort + "/" + filter;
+      console.log("pass filter " + filter);
+      console.log("pass sort " + sort);
       const apt = await fetch(url).then((res) => res.json());
-      console.log('load apartment success');
+      console.log("load apartment success");
       setApartments(apt);
     } catch (err) {
-      console.log('error');
+      console.log("error");
     }
   };
 
   const getAptSort = async (sortId) => {
     try {
-      const url = './apartments/' + sortId + '/' + filter;
-      console.log('pass filter ' + filter);
-      console.log('pass sort ' + sortId);
+      const url = "./apartments/" + sortId + "/" + filter;
+      console.log("pass filter " + filter);
+      console.log("pass sort " + sortId);
       const apt = await fetch(url).then((res) => res.json());
       setApartments(apt);
     } catch (err) {
-      console.log('error');
+      console.log("error");
     }
   };
 
   const getAptFilter = async (filterId) => {
     try {
-      const url = './apartments/' + sort + '/' + filterId;
-      console.log('pass filter ' + filterId);
-      console.log('pass sort ' + sort);
+      const url = "./apartments/" + sort + "/" + filterId;
+      console.log("pass filter " + filterId);
+      console.log("pass sort " + sort);
       const apt = await fetch(url).then((res) => res.json());
       setApartments(apt);
     } catch (err) {
-      console.log('error');
+      console.log("error");
     }
   };
 
   // Load users (re-render to get the updated user info)
   const loadUser = () => {
-    const url = './user/' + user.username;
+    const url = "./user/" + user.username;
     axios
       .get(url)
       .then((res) => {
-        console.log('success');
+        console.log("success");
         setCurrUser(res.data);
       })
       .catch((err) => {
-        console.log('error');
+        console.log("error");
       });
   };
 
@@ -97,7 +97,7 @@ function Apartments({ user }) {
 
   // Add apartment to user's wishlist
   const addToWishlist = (aptId) => {
-    const url = '/apt';
+    const url = "/apt";
     const data = {
       username: currUser.username,
       id: aptId,
@@ -105,7 +105,7 @@ function Apartments({ user }) {
     axios
       .post(url, data)
       .then(async () => {
-        console.log('return back');
+        console.log("return back");
         const msg = `${currUser.username} add apartment ${aptId} success!`;
         console.log(msg);
         await sleep(1000);
@@ -138,7 +138,7 @@ function Apartments({ user }) {
 
   // Add one like
   const updateLike = (aptId, count) => {
-    const url = '/addlike';
+    const url = "/addlike";
     const data = {
       username: currUser.username,
       id: aptId,
@@ -162,7 +162,7 @@ function Apartments({ user }) {
 
   // Add one dislike
   const updateDislike = (aptId, count) => {
-    const url = '/adddislike';
+    const url = "/adddislike";
     const data = {
       username: currUser.username,
       id: aptId,
@@ -186,14 +186,14 @@ function Apartments({ user }) {
 
   // Change filter
   const filterApt = (filter) => {
-    console.log('change fileter to ' + filter);
+    console.log("change fileter to " + filter);
     setFilter(filter);
     getAptFilter(filter);
   };
 
   // Change sort condition
   const sortApt = (sort) => {
-    console.log('change sort to ' + sort);
+    console.log("change sort to " + sort);
     setSort(sort);
     getAptSort(sort);
   };
@@ -201,18 +201,20 @@ function Apartments({ user }) {
   // Keyword filter
   const searchKeyword = async () => {
     try {
-      const keyword = document.getElementById('keyword').value;
-      if (keyword === '') {
+      const keyword = document.getElementById("keyword").value;
+      if (keyword === "") {
+        setFilter(0);
+        setSort(0);
         initialize();
         return null;
       }
-      const url = './search/' + keyword;
-      console.log('search for ' + keyword);
+      const url = "./search/" + keyword;
+      console.log("search for " + keyword);
       const apt = await fetch(url).then((res) => res.json());
-      console.log('search success');
+      console.log("search success");
       setApartments(apt);
     } catch (err) {
-      console.log('error');
+      console.log("error");
     }
   };
 
@@ -237,8 +239,8 @@ function Apartments({ user }) {
             <Card.Text>
               <i
                 className="fas fa-map-marker-alt"
-                style={{ color: '#D70F4E', fontSize: '1.0em' }}
-              ></i>{' '}
+                style={{ color: "#D70F4E", fontSize: "1.0em" }}
+              ></i>{" "}
               {a.mapaddress}
             </Card.Text>
             <Card.Text>
@@ -251,16 +253,16 @@ function Apartments({ user }) {
                   id={`wish-${a._id}`}
                   aria-label="addApt"
                   style={{
-                    border: 'none',
-                    backgroundColor: 'Transparent',
-                    color: '#D70F4E',
+                    border: "none",
+                    backgroundColor: "Transparent",
+                    color: "#D70F4E",
                   }}
                 >
                   Add to Wishlist
                 </Button>
                 <i
                   className="fas fa-cart-plus"
-                  style={{ color: '#D70F4E', fontSize: '1.5em' }}
+                  style={{ color: "#D70F4E", fontSize: "1.5em" }}
                 ></i>
               </div>
             ) : (
@@ -268,26 +270,26 @@ function Apartments({ user }) {
                 onClick={() => removeFromWishlist(a._id)}
                 aria-label="removeApt"
                 style={{
-                  border: 'none',
-                  backgroundColor: 'Transparent',
-                  color: '#D70F4E',
+                  border: "none",
+                  backgroundColor: "Transparent",
+                  color: "#D70F4E",
                 }}
               >
                 Remove from Wishlist
               </Button>
             )}
           </Card.Body>
-          <Card.Footer className="text-muted" style={{ color: 'black' }}>
-            {' '}
+          <Card.Footer className="text-muted" style={{ color: "black" }}>
+            {" "}
             <Button
               onClick={() => updateLike(a._id, a.like + 1)}
               aria-label="addLike"
               disabled={currUser.likelist.includes(a._id)}
-              style={{ border: 'none', backgroundColor: 'Transparent' }}
+              style={{ border: "none", backgroundColor: "Transparent" }}
             >
               <i
                 className="fas fa-thumbs-up"
-                style={{ color: '#D70F4E', fontSize: '1.5em' }}
+                style={{ color: "#D70F4E", fontSize: "1.5em" }}
               ></i>
             </Button>
             {a.like}
@@ -295,11 +297,11 @@ function Apartments({ user }) {
               onClick={() => updateDislike(a._id, a.dislike + 1)}
               aria-label="addDislike"
               disabled={currUser.dislikelist.includes(a._id)}
-              style={{ border: 'none', backgroundColor: 'Transparent' }}
+              style={{ border: "none", backgroundColor: "Transparent" }}
             >
               <i
                 className="fas fa-thumbs-down"
-                style={{ color: '#D70F4E', fontSize: '1.5em' }}
+                style={{ color: "#D70F4E", fontSize: "1.5em" }}
               ></i>
             </Button>
             {a.dislike}
@@ -320,11 +322,11 @@ function Apartments({ user }) {
               aria-controls="example-collapse-text"
               aria-expanded={open}
               id="filter-basic-button"
-              style={{ color: 'D70F4E' }}
+              style={{ color: "D70F4E" }}
             >
               <i
                 className="fas fa-filter"
-                style={{ color: 'D70F4E', fontSize: '0.9em' }}
+                style={{ color: "D70F4E", fontSize: "0.9em" }}
               ></i>
               Filter
             </Button>
@@ -337,25 +339,25 @@ function Apartments({ user }) {
                 </div>
                 <div>
                   <label>
-                    Price: Below $2000{' '}
+                    Price: Below $2000{" "}
                     <input type="checkbox" onClick={() => filterApt(1)} />
                   </label>
                 </div>
                 <div>
                   <label>
-                    Price: $2000 - $4000{' '}
+                    Price: $2000 - $4000{" "}
                     <input type="checkbox" onClick={() => filterApt(2)} />
                   </label>
                 </div>
                 <div>
                   <label>
-                    Price: $4000 - $6000{' '}
+                    Price: $4000 - $6000{" "}
                     <input type="checkbox" onClick={() => filterApt(3)} />
                   </label>
                 </div>
                 <div>
                   <label>
-                    Price: Above $6000{' '}
+                    Price: Above $6000{" "}
                     <input type="checkbox" onClick={() => filterApt(4)} />
                   </label>
                 </div>
@@ -399,19 +401,19 @@ function Apartments({ user }) {
           >
             <i
               className="fas fa-search"
-              style={{ color: '#D70F4E', fontSize: '2.0em' }}
+              style={{ color: "#D70F4E", fontSize: "2.0em" }}
             ></i>
           </Button>
         </div>
       </div>
       <br></br>
-      <ul className="apartment-container" style={{ listStyle: 'none' }}>
+      <ul className="apartment-container" style={{ listStyle: "none" }}>
         {renderApartments()}
       </ul>
       <Pagination
         className="pagination"
         style={{
-          fontSize: '24px',
+          fontSize: "24px",
         }}
       >
         <Pagination.First onClick={() => changePage(1)} />

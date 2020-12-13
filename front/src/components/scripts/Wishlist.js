@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import Card from 'react-bootstrap/Card';
-import ListGroup from 'react-bootstrap/ListGroup';
-import ListGroupItem from 'react-bootstrap/ListGroupItem';
-import Button from 'react-bootstrap/Button';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import Card from "react-bootstrap/Card";
+import ListGroup from "react-bootstrap/ListGroup";
+import ListGroupItem from "react-bootstrap/ListGroupItem";
+import Button from "react-bootstrap/Button";
 
 const Wishlist = ({ user, setCurrentModule }) => {
   // since each time we update the schedule, we have to load user again
   const [currUser, setCurrUser] = useState(user);
 
   useEffect(() => {
-    console.log('loading curr');
+    console.log("loading curr");
     getCurrentUser();
     return () => {
       setCurrUser();
@@ -18,15 +18,15 @@ const Wishlist = ({ user, setCurrentModule }) => {
   }, []);
 
   const getCurrentUser = () => {
-    const url = './user/' + user.username;
+    const url = "./user/" + user.username;
     axios
       .get(url)
       .then((res) => {
-        console.log('success');
+        console.log("success");
         setCurrUser(res.data);
       })
       .catch((err) => {
-        console.log('error');
+        console.log("error");
       });
   };
 
@@ -52,11 +52,11 @@ const Wishlist = ({ user, setCurrentModule }) => {
   };
 
   return (
-    <div className={'personal-schedule-container'}>
-      <ul style={{ listStyle: 'none' }}>
+    <div className={"personal-schedule-container"}>
+      <ul style={{ listStyle: "none" }}>
         {currUser == null || currUser.wishlist.length === 0 ? (
           <li className="emptylist">
-            <Card style={{ width: '20rem' }}>
+            <Card style={{ width: "20rem" }}>
               <Card.Body>
                 <Card.Title>Your wishlist is empty</Card.Title>
               </Card.Body>
@@ -67,7 +67,7 @@ const Wishlist = ({ user, setCurrentModule }) => {
             return (
               <li
                 key={`apt-${apartment._id}-${new Date().getSeconds()}`}
-                className={'wishlist-container'}
+                className={"wishlist-container"}
               >
                 {/* <div className={'schedule-text'}>
                   <h1>
@@ -80,7 +80,7 @@ const Wishlist = ({ user, setCurrentModule }) => {
                 <button onClick={() => removeApartment(apartment._id)}>
                   Remove
                 </button> */}
-                <Card style={{ width: '65rem' }}>
+                <Card style={{ width: "65rem" }}>
                   <Card.Header as="h1">
                     <img src={apartment.images[0]} alt="apt" />
                   </Card.Header>
@@ -91,8 +91,8 @@ const Wishlist = ({ user, setCurrentModule }) => {
                     <ListGroupItem>
                       <i
                         className="fas fa-map-marker-alt"
-                        style={{ color: '#D70F4E', fontSize: '1.0em' }}
-                      ></i>{' '}
+                        style={{ color: "#D70F4E", fontSize: "1.0em" }}
+                      ></i>{" "}
                       {apartment.mapaddress}
                     </ListGroupItem>
                     <ListGroupItem>Price: {apartment.price}</ListGroupItem>
@@ -102,14 +102,14 @@ const Wishlist = ({ user, setCurrentModule }) => {
                     <Button
                       onClick={() => removeApartment(apartment._id)}
                       style={{
-                        border: 'none',
-                        backgroundColor: 'Transparent',
-                        color: '#D70F4E',
+                        border: "none",
+                        backgroundColor: "Transparent",
+                        color: "#D70F4E",
                       }}
                     >
                       <i
                         className="far fa-trash-alt"
-                        style={{ color: '#D70F4E', fontSize: '1.5em' }}
+                        style={{ color: "#D70F4E", fontSize: "1.5em" }}
                       ></i>
                       Remove from wishlist
                     </Button>

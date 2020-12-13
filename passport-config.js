@@ -1,5 +1,5 @@
-const LocalStrategy = require('passport-local').Strategy;
-const bcrypt = require('bcrypt');
+const LocalStrategy = require("passport-local").Strategy;
+const bcrypt = require("bcrypt");
 
 const initialize = (passport, getUserByUsername) => {
   // authenticate user with username and password
@@ -7,16 +7,16 @@ const initialize = (passport, getUserByUsername) => {
     const user = await getUserByUsername(username);
     if (user == null) {
       return done(null, false, {
-        message: 'No user found with given username!',
+        message: "No user found with given username!",
       });
     }
 
     try {
       if (await bcrypt.compare(password, user.password)) {
-        console.log('success compare');
+        console.log("success compare");
         return done(null, user);
       } else {
-        return done(null, false, { message: 'Password incorrect!' });
+        return done(null, false, { message: "Password incorrect!" });
       }
     } catch (e) {
       return done(e);
@@ -26,7 +26,7 @@ const initialize = (passport, getUserByUsername) => {
   passport.use(
     new LocalStrategy(
       {
-        usernameField: 'username',
+        usernameField: "username",
       },
       authenticateUser
     )

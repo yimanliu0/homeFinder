@@ -5,22 +5,22 @@ module.exports = {
     node: true,
   },
   extends: [
-    'eslint:recommended',
-    'prettier',
+    "eslint:recommended",
+    "prettier",
     // "plugin:react/recommended"
   ],
   parserOptions: {
     ecmaVersion: 2018,
-    sourceType: 'module',
+    sourceType: "module",
     ecmaFeatures: {
       jsx: true,
     },
   },
   rules: {
-    indent: ['warn', 2, { SwitchCase: 1 }],
-    'linebreak-style': ['error', 'unix'],
-    quotes: ['error', 'single'],
-    semi: ['error', 'always'],
-    'no-console': 0,
+    indent: ["warn", 2, { SwitchCase: 1 }],
+    "linebreak-style": ["error", "unix"],
+    quotes: ["error", "double"],
+    semi: ["error", "always"],
+    "no-console": 0,
   },
 };

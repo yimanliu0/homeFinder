@@ -31,12 +31,12 @@
   - Clone the repository.
   - Install all the dependencies.
 
-  ```bash
-  $ git clone https://github.com/yimanliu0/homeFinder
-  $ npm install
-  $ cd front
-  $ npm install
-  ```
+```bash
+$ git clone https://github.com/yimanliu0/homeFinder
+$ npm install
+$ cd front
+$ npm install
+```
 
 - Start the server:
   - Start the backend.

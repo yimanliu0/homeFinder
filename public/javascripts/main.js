@@ -19,15 +19,6 @@ function populateData(apartments) {
   }
 }
 
-// AJAX request
-// fetch('/posts')
-//   .then((res) => res.json())
-//   .then(populatePosts)
-//   .catch((err) => {
-//     divErr.textContent = err.message;
-//     divErr.style.display = 'block';
-//   });
-
 fetch('/apartments')
   .then((res) => res.json())
   .then(populateData(res))

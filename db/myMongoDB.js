@@ -582,7 +582,6 @@ function MyDB() {
   // Load all users
   myDB.loadUsers = async () => {
     const client = new MongoClient(uri, { useUnifiedTopology: true });
-    console.log(uri);
     try {
       await client.connect();
 

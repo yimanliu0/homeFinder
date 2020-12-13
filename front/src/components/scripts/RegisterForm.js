@@ -14,7 +14,6 @@ function RegisterForm(props) {
       .post(url, data)
       .then((res) => {
         console.log('Register Success');
-        setErrMsg('Register Success');
         window.location.href = '/';
       })
       .catch((error) => {
@@ -41,6 +40,7 @@ function RegisterForm(props) {
             aria-label="Username"
             placeholder="Username (6 or more characters)"
             pattern="[A-Za-z0-9]{6,}"
+            autoComplete="on"
             ref={register({ required: 'Username required!' })}
           />
           {errors.username && (
@@ -58,6 +58,7 @@ function RegisterForm(props) {
             aria-label="Password"
             placeholder="Password (8 or more characters)"
             pattern=".{8,}"
+            autoComplete="on"
             ref={register({ required: 'Password required!' })}
           />
         </div>
@@ -75,6 +76,7 @@ function RegisterForm(props) {
             aria-label="confirm-password"
             placeholder="Confirm Password"
             pattern=".{8,}"
+            autoComplete="on"
             ref={register({
               validate: (value) =>
                 value === watch('password') || 'Passwords does not match!',

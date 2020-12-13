@@ -53,19 +53,19 @@ const Wishlist = ({ user, setCurrentModule }) => {
 
   return (
     <div className={'personal-schedule-container'}>
-      <ul>
+      <ul style={{ listStyle: 'none' }}>
         {currUser == null || currUser.wishlist.length === 0 ? (
-          <div className="emptylist">
+          <li className="emptylist">
             <Card style={{ width: '20rem' }}>
               <Card.Body>
                 <Card.Title>Your wishlist is empty</Card.Title>
               </Card.Body>
             </Card>
-          </div>
+          </li>
         ) : (
           currUser.wishlist.map((apartment) => {
             return (
-              <div
+              <li
                 key={`apt-${apartment._id}-${new Date().getSeconds()}`}
                 className={'wishlist-container'}
               >
@@ -81,7 +81,7 @@ const Wishlist = ({ user, setCurrentModule }) => {
                   Remove
                 </button> */}
                 <Card style={{ width: '65rem' }}>
-                  <Card.Header as="h5">
+                  <Card.Header as="h1">
                     <img src={apartment.images[0]} alt="apt" />
                   </Card.Header>
                   <Card.Body>
@@ -116,7 +116,7 @@ const Wishlist = ({ user, setCurrentModule }) => {
                   </Card.Body>
                 </Card>
                 <br></br>
-              </div>
+              </li>
             );
           })
         )}

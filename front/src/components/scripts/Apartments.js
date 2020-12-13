@@ -15,6 +15,7 @@ function Apartments({ user }) {
   const [filter, setFilter] = useState(0);
   const [sort, setSort] = useState(0);
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState(1);
 
   const initialize = async () => {
     try {
@@ -88,11 +89,6 @@ function Apartments({ user }) {
     setFilter(0);
     setSort(0);
   }, []);
-
-  // Handle Pagination
-  const changePage = (pageNum) => {
-    setPage(pageNum);
-  };
 
   // Handle cloud database delay issue
   function sleep(ms) {
@@ -220,51 +216,18 @@ function Apartments({ user }) {
     }
   };
 
+  // Handle Pagination
+  const changePage = (pageNum) => {
+    setPage(pageNum);
+    setActive(pageNum);
+  };
+
   const renderApartments = () => {
     if (page <= 0) {
       setPage(1);
     }
     return apartments.slice(1 * page, 1 * page + 5).map((a) => (
-      <div className="apartment-list" key={a._id}>
-        {/* <li> */}
-        {/* <li key={a._id}>
-          <img src={a.images[0]} alt="apt" /> has: {a.housing} with price:
-          {a.price}
-          <a
-            href="/"
-            onClick={(evt) => {
-              evt.preventDefault();
-              renderApt(a);
-            }}
-          >
-            More info
-          </a>
-          {a.titletextonly}
-          {!currUser.wishlistApt.includes(a._id) ? (
-            <button onClick={() => addToWishlist(a._id)} id={`wish-${a._id}`}>
-              Add to Wishlist
-            </button>
-          ) : (
-            <button onClick={() => removeFromWishlist(a._id)}>
-              Remove from Wishlist
-            </button>
-          )}
-          <button
-            onClick={() => updateLike(a._id, a.like + 1)}
-            disabled={currUser.likelist.includes(a._id)}
-          >
-            Like
-          </button>
-          {a.like}
-          <button
-            onClick={() => updateDislike(a._id, a.dislike + 1)}
-            disabled={currUser.dislikelist.includes(a._id)}
-          >
-            Dislike
-          </button>
-          {a.dislike}
-        </li> */}
-
+      <li className="apartment-list" key={a._id}>
         <Card className="text-center">
           <Card.Header>
             <img src={a.images[0]} alt="apt" />
@@ -286,6 +249,7 @@ function Apartments({ user }) {
                 <Button
                   onClick={() => addToWishlist(a._id)}
                   id={`wish-${a._id}`}
+                  aria-label="addApt"
                   style={{
                     border: 'none',
                     backgroundColor: 'Transparent',
@@ -302,6 +266,7 @@ function Apartments({ user }) {
             ) : (
               <Button
                 onClick={() => removeFromWishlist(a._id)}
+                aria-label="removeApt"
                 style={{
                   border: 'none',
                   backgroundColor: 'Transparent',
@@ -312,10 +277,11 @@ function Apartments({ user }) {
               </Button>
             )}
           </Card.Body>
-          <Card.Footer className="text-muted">
+          <Card.Footer className="text-muted" style={{ color: 'black' }}>
             {' '}
             <Button
               onClick={() => updateLike(a._id, a.like + 1)}
+              aria-label="addLike"
               disabled={currUser.likelist.includes(a._id)}
               style={{ border: 'none', backgroundColor: 'Transparent' }}
             >
@@ -327,6 +293,7 @@ function Apartments({ user }) {
             {a.like}
             <Button
               onClick={() => updateDislike(a._id, a.dislike + 1)}
+              aria-label="addDislike"
               disabled={currUser.dislikelist.includes(a._id)}
               style={{ border: 'none', backgroundColor: 'Transparent' }}
             >
@@ -339,8 +306,7 @@ function Apartments({ user }) {
           </Card.Footer>
         </Card>
         <br />
-        {/* </li> */}
-      </div>
+      </li>
     ));
   };
   return (
@@ -350,6 +316,7 @@ function Apartments({ user }) {
           <div className="filter-button">
             <Button
               onClick={() => setOpen(!open)}
+              aria-label="filter"
               aria-controls="example-collapse-text"
               aria-expanded={open}
               id="filter-basic-button"
@@ -396,7 +363,11 @@ function Apartments({ user }) {
             </Collapse>
           </div>
           <div className="sort-button">
-            <DropdownButton id="dropdown-basic-button" title="Sort by">
+            <DropdownButton
+              id="dropdown-basic-button"
+              title="Sort by"
+              aria-label="sort"
+            >
               <Dropdown.Item href="#" onClick={() => sortApt(1)}>
                 Price: Low to High
               </Dropdown.Item>
@@ -421,7 +392,11 @@ function Apartments({ user }) {
             id="keyword"
             placeholder="What would your next home be?"
           ></input>
-          <Button variant="outline-success" onClick={() => searchKeyword()}>
+          <Button
+            variant="outline-success"
+            onClick={() => searchKeyword()}
+            aria-label="search"
+          >
             <i
               className="fas fa-search"
               style={{ color: '#D70F4E', fontSize: '2.0em' }}
@@ -430,52 +405,57 @@ function Apartments({ user }) {
         </div>
       </div>
       <br></br>
-      <ul className="apartment-container">{renderApartments()}</ul>
-      {/* <nav aria-label="Page navigation example">
-        <ul className="pagination">
-          <li className="page-item">
-            <button className="page-link" onClick={() => changePage(page - 1)}>
-              Previous
-            </button>
-          </li>
-          <li className="page-item">
-            <button className="page-link" onClick={() => changePage(1)}>
-              1
-            </button>
-          </li>
-          <li className="page-item">
-            <button className="page-link" onClick={() => changePage(2)}>
-              2
-            </button>
-          </li>
-          <li className="page-item">
-            <button className="page-link" onClick={() => changePage(3)}>
-              3
-            </button>
-          </li>
-          <li className="page-item">
-            <button className="page-link" onClick={() => changePage(4)}>
-              4
-            </button>
-          </li>
-          <li className="page-item">
-            <button className="page-link" onClick={() => changePage(5)}>
-              5
-            </button>
-          </li>
-          <li className="page-item">
-            <button className="page-link" onClick={() => changePage(page + 1)}>
-              Next
-            </button>
-          </li>
-        </ul>
-      </nav> */}
-      <Pagination className="pagination">
+      <ul className="apartment-container" style={{ listStyle: 'none' }}>
+        {renderApartments()}
+      </ul>
+      <Pagination
+        className="pagination"
+        style={{
+          fontSize: '24px',
+        }}
+      >
         <Pagination.First onClick={() => changePage(1)} />
         <Pagination.Prev onClick={() => changePage(page - 1)} />
-        <Pagination.Item onClick={() => changePage(1)}>{1}</Pagination.Item>
-        <Pagination.Item onClick={() => changePage(6)}>{2}</Pagination.Item>
-        <Pagination.Item onClick={() => changePage(11)}>{3}</Pagination.Item>
+        <Pagination.Item onClick={() => changePage(1)} active={1 === active}>
+          {1}
+        </Pagination.Item>
+        <Pagination.Item onClick={() => changePage(6)} active={6 === active}>
+          {2}
+        </Pagination.Item>
+        <Pagination.Item onClick={() => changePage(11)} active={11 === active}>
+          {3}
+        </Pagination.Item>
+        <Pagination.Item onClick={() => changePage(16)} active={16 === active}>
+          {4}
+        </Pagination.Item>
+        <Pagination.Item onClick={() => changePage(21)} active={21 === active}>
+          {5}
+        </Pagination.Item>
+        <Pagination.Item onClick={() => changePage(26)} active={26 === active}>
+          {6}
+        </Pagination.Item>
+        <Pagination.Item onClick={() => changePage(31)} active={31 === active}>
+          {7}
+        </Pagination.Item>
+        <Pagination.Item onClick={() => changePage(36)} active={36 === active}>
+          {8}
+        </Pagination.Item>
+        <Pagination.Item onClick={() => changePage(41)} active={41 === active}>
+          {9}
+        </Pagination.Item>
+        <Pagination.Item onClick={() => changePage(46)} active={46 === active}>
+          {10}
+        </Pagination.Item>
+        <Pagination.Ellipsis />
+        <Pagination.Item onClick={() => changePage(71)} active={71 === active}>
+          {15}
+        </Pagination.Item>
+        <Pagination.Item onClick={() => changePage(76)} active={76 === active}>
+          {16}
+        </Pagination.Item>
+        <Pagination.Item onClick={() => changePage(81)} active={81 === active}>
+          {17}
+        </Pagination.Item>
         <Pagination.Ellipsis />
         <Pagination.Next onClick={() => changePage(page + 5)} />
         <Pagination.Last onClick={() => changePage(600)} />

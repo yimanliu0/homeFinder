@@ -68,10 +68,10 @@
 }
 
 .pagination {
-  background-color: white;
+  background-color: red;
   position: relative;
   width: 10%;
-  left: 420px;
+  left: 160px;
   bottom: 100px;
 }
 
@@ -86,4 +86,8 @@
   padding-top: 20px;
   bottom: 80px;
   border-radius: 18px;
+}
+
+.text-muted {
+  background-color: white;
 }

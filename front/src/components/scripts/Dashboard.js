@@ -5,7 +5,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import '../styles/Dashboard.css';
 
-const Dashboard = ({ user }) => {
+const Dashboard = ({ user, setLogin }) => {
   const [currentModule, setCurrentModule] = useState(
     <Apartments user={user} />
   );
@@ -19,6 +19,7 @@ const Dashboard = ({ user }) => {
             <Nav.Link
               href="#home"
               onClick={() => setCurrentModule(<Apartments user={user} />)}
+              style={{ color: 'black' }}
             >
               <i
                 className="fas fa-home"
@@ -29,6 +30,7 @@ const Dashboard = ({ user }) => {
             <Nav.Link
               href="#wishlist"
               onClick={() => setCurrentModule(<Wishlist user={user} />)}
+              style={{ color: 'black' }}
             >
               <i
                 className="far fa-heart"
@@ -36,7 +38,12 @@ const Dashboard = ({ user }) => {
               ></i>
               Wishlist
             </Nav.Link>
-            <Nav.Link href={'/logout'} id="logout-link">
+            <Nav.Link
+              href={'/logout'}
+              id="logout-link"
+              style={{ color: 'black' }}
+              onClick={() => setLogin(false)}
+            >
               {' '}
               <i
                 className="fas fa-sign-out-alt"
@@ -46,41 +53,6 @@ const Dashboard = ({ user }) => {
             </Nav.Link>
           </Nav>
         </Navbar>
-
-        {/* <ul className="list">
-          <li
-            key="apartment"
-            style={{ listStyleType: 'None' }}
-            className="apartment"
-          >
-            <a
-              href={currentPage}
-              className="App-link"
-              onClick={() => setCurrentModule(<Apartments user={user} />)}
-            >
-              <i className={'fa fa-calendar'} /> Apartments
-            </a>
-          </li>
-          <li
-            key="wishlist"
-            style={{ listStyleType: 'None' }}
-            className="wishlist"
-          >
-            <a
-              href={currentPage}
-              className="App-link"
-              onClick={() => setCurrentModule(<Wishlist user={user} />)}
-            >
-              <i className={'fa fa-user'} /> Wishlist
-            </a>
-          </li>
-          <li key="log-out" style={{ listStyleType: 'None' }}>
-            <a href={'/logout'} className="App-link">
-              {' '}
-              <i className={'fa fa-sign-out'} /> Log out
-            </a>
-          </li>
-        </ul> */}
       </div>
       <div style={{ paddingTop: '100px' }}>{currentModule}</div>
     </div>

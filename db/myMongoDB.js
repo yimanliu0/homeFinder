@@ -1,3 +1,4 @@
+require("dotenv").config();
 const { MongoClient } = require("mongodb");
 function MyDB() {
   const myDB = {};

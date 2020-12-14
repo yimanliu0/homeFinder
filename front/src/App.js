@@ -59,6 +59,7 @@ function App() {
       <nav
         className="navbar navbar-light bg-light justify-content-between"
         id="home-nav"
+        aria-label="homepagenav"
       >
         <h1 className="navbar-brand" style={{ color: "#d70f4e" }}>
           BetterHome

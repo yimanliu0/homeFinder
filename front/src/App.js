@@ -9,6 +9,7 @@ function App() {
   const [register, setRegister] = useState(false);
   const [login, setLogin] = useState(false);
 
+  // this is a cool way to handle the home page (using App.js instead of a child component). I will try this in my future projects.
   const setHomepage = () => {
     if (login && !user && !register) {
       return (

@@ -23,7 +23,7 @@ const Dashboard = ({ user, setLogin }) => {
             >
               <i
                 className="fas fa-home"
-                style={{ color: "#D70F4E", fontSize: "1.5em" }}
+                style={{ color: "#D70F4E", fontSize: "1.5em" }} // may be better to put style in the css sheets
               ></i>
               Home
             </Nav.Link>

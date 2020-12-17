@@ -30,6 +30,7 @@ router.get("/apartments/:sortId/:filterId", async (req, res) => {
   console.log("current filter is " + filterId);
   console.log("current sort is " + sortId);
 
+  // think this code could also be condensed by passing info on call from the front end
   if (filterId === "0") {
     if (sortId === "0") {
       apartments = await myDB.getApt();

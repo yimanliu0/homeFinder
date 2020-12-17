@@ -108,7 +108,7 @@ function Apartments({ user }) {
         console.log("return back");
         const msg = `${currUser.username} add apartment ${aptId} success!`;
         console.log(msg);
-        await sleep(1000);
+        await sleep(1000); /*why sleep here?*/
         loadUser();
         getApt();
       })
@@ -246,7 +246,7 @@ function Apartments({ user }) {
             <Card.Text>
               {a.price} {a.housing}
             </Card.Text>
-            {!currUser.wishlistApt.includes(a._id) ? (
+            {!currUser.wishlistApt.includes(a._id) ? ( /*cool use of _id, i struggled to leverage this field in my project*/
               <div>
                 <Button
                   onClick={() => addToWishlist(a._id)}

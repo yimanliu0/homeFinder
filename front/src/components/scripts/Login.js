@@ -5,7 +5,7 @@ import "../styles/Login.css";
 function Login(props) {
   const [loginError, setLoginError] = useState("");
 
-  const page = "#";
+  const page = "#"; // generally not good to use globals in js, but for a small use case should work ok
 
   const handleLoginClick = (e) => {
     e.preventDefault();

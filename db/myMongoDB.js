@@ -5,7 +5,9 @@ function MyDB() {
 
   const uri = process.env.MONGO_URL || "mongodb://localhost:27017";
 
-  // Load apt normal order no sort
+  // cool way to sort using the database, I handled my sorts on the front-end. could be useful to do it on the backend with the number of posts being loaded
+  // i think a lot of these could have been condensed by passing a field to the database call indicating the sort you want
+  // Load apt normal order no sort 
   myDB.getApt = async () => {
     const client = new MongoClient(uri, { useUnifiedTopology: true });
     try {

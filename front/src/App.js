@@ -4,6 +4,8 @@ import Dashboard from "./components/scripts/Dashboard.js";
 import Login from "./components/scripts/Login.js";
 import RegisterForm from "./components/scripts/RegisterForm.js";
 
+//test
+
 function App() {
   const [user, setUser] = useState();
   const [register, setRegister] = useState(false);
